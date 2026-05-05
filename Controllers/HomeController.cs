@@ -31,7 +31,19 @@ public class HomeController : Controller
 
     public ActionResult GuardarDatos(string nombre, int edad, int DNI, string trabaja, string tipoEmpleo, double ingresos, 
     string deudas, List<string> deudi, double monto, string plazo, string terminosyco){
-        
+        bool accede = true;
+        if (edad < 18 || trabaja == "No")
+        {
+            if (ingresos < 250.000 || monto < ingresos*5)
+            
+            {
+                if(deudas == "Sí" || terminosyco == "No")
+                {
+
+                }
+            }
+        }
+
         return 
     }
 }
