@@ -32,18 +32,20 @@ public class HomeController : Controller
     public ActionResult GuardarDatos(string nombre, int edad, int DNI, string trabaja, string tipoEmpleo, double ingresos, 
     string deudas, List<string> deudi, double monto, string plazo, string terminosyco){
         bool accede = true;
-        if (edad < 18 || trabaja == "No")
+        if (edad < 18 || trabaja == "No" || ingresos < 250000 || monto < ingresos*5 || deudas == "Sí" || terminosyco == "No")
         {
-            if (ingresos < 250.000 || monto < ingresos*5)
-            
-            {
-                if(deudas == "Sí" || terminosyco == "No")
-                {
+           accede = false;
+            return View("denegado");
+        }
+        else{
 
-                }
-            }
+            accede = true;
+            return View("aceptado");
         }
 
-        return 
+        ViewBag.acceso = accede;
+        return View("denegado");
+
+
     }
 }
